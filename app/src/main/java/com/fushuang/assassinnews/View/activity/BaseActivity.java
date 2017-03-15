@@ -7,7 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.fushuang.assassinnews.App;
 import com.fushuang.assassinnews.View.BaseView;
+import com.fushuang.assassinnews.di.component.ActivityComponent;
+import com.fushuang.assassinnews.di.module.ActivityModule;
 import com.fushuang.assassinnews.presenter.BasePresenter;
 
 import javax.inject.Inject;
@@ -53,14 +56,19 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
         });
     }
 
-//    protected ActivityComponent getActivityComponent(){
-//        return  DaggerActivityComponent.builder()
-//                .appComponent(App.getAppComponent())
-//                .activityModule(getActivityModule())
-//                .build();
-//    }
+    protected ActivityComponent getActivityComponent(){
+        return  DaggerActivityComponent.builder()
+                .appComponent(App.getAppComponent())
+                .activityModule(getActivityModule())
+                .build();
+    }
 
     protected abstract void initInject();
     protected abstract int getLayout();
     protected abstract void init();
+
+    public ActivityModule getActivityModule() {
+        return new ActivityModule(this);
+    }
+
 }
