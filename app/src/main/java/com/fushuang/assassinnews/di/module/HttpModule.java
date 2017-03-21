@@ -50,7 +50,7 @@ public class HttpModule {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request();
-                request = request.newBuilder().cacheControl(CacheControl.FORCE_CACHE).build();
+                request = request.newBuilder().cacheControl(CacheControl.FORCE_NETWORK).build();
                 Response response = chain.proceed(request);
                 int maxAge = 0;
                 // 有网络时, 不缓存, 最大保存时长为0

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="资讯">
+        <menu >
+            <item android:id="@+id/drawer_zhihu"
+                  android:title="知乎日报"
+                  android:icon="@drawable/ic_drawer_zhihu"
+                  android:checkable="true"/>
+            <item android:id="@+id/drawer_weixin"
+                  android:title="微信精选"
+                  android:icon="@drawable/ic_drawer_wechat"
+                  android:checkable="true"/>
+            <item android:id="@+id/drawer_gank"
+                  android:title="干货集中营"
+                  android:icon="@drawable/ic_drawer_gank"
+                  android:checkable="true"/>
+            <item android:id="@+id/drawer_xitu"
+                  android:title="稀土掘金"
+                  android:icon="@drawable/ic_drawer_gold"
+                  android:checkable="true"/>
+            <item android:id="@+id/drawer_v2ex"
+                  android:title="V2EX"
+                  android:icon="@drawable/ic_drawer_vtex"
+                  android:checkable="true"/>
+        </menu>
+    </item>
+    <item android:title="选项">
+        <menu>
+            <item android:id="@+id/drawer_collection"
+                  android:title="收藏"
+                  android:icon="@drawable/ic_drawer_like"
+                  android:checkable="true"/>
+            <item android:id="@+id/drawer_setting"
+                  android:title="设置"
+                  android:icon="@drawable/ic_drawer_setting"
+                  android:checkable="true"/>
+        </menu>
+    </item>
+</menu>

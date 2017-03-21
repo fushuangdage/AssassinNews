@@ -12,8 +12,8 @@ import rx.Observable;
  */
 
 public interface ZhihuApis {
-    String HOST = "http://news-at.zhihu.com/api/4/";
 
+    String HOST = "http://news-at.zhihu.com/api/4/";
 
     /**
      * 最新日报

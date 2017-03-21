@@ -1,8 +1,10 @@
 package com.fushuang.assassinnews;
 
 import android.app.Application;
+import android.support.v7.app.AppCompatDelegate;
 
 import com.fushuang.assassinnews.di.component.AppComponent;
+import com.fushuang.assassinnews.di.component.DaggerAppComponent;
 import com.fushuang.assassinnews.di.module.AppModule;
 import com.fushuang.assassinnews.di.module.HttpModule;
 import com.fushuang.assassinnews.di.module.PageModule;
@@ -14,13 +16,19 @@ import com.fushuang.assassinnews.di.module.PageModule;
 public class App extends Application {
     public static App instance;
     public static AppComponent appComponent;
+
+    static {
+        AppCompatDelegate.setDefaultNightMode(
+                AppCompatDelegate.MODE_NIGHT_NO);
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
         instance=this;
     }
 
-    public static App getInstance() {
+    public static synchronized App getInstance() {
         return instance;
     }
 

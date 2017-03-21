@@ -3,13 +3,18 @@ package com.fushuang.assassinnews.View.activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.fushuang.assassinnews.App;
+import com.fushuang.assassinnews.Constants;
 import com.fushuang.assassinnews.View.BaseView;
 import com.fushuang.assassinnews.di.component.ActivityComponent;
+import com.fushuang.assassinnews.di.component.DaggerActivityComponent;
 import com.fushuang.assassinnews.di.module.ActivityModule;
 import com.fushuang.assassinnews.presenter.BasePresenter;
 
@@ -70,5 +75,23 @@ public abstract class BaseActivity<T extends BasePresenter> extends AppCompatAct
     public ActivityModule getActivityModule() {
         return new ActivityModule(this);
     }
+
+    /**
+     * 加载多个根Fragment
+     */
+    void loadMultipleRootTransaction(FragmentManager fragmentManager, int containerId, int showPosition, Fragment... tos) {
+        FragmentTransaction ft = fragmentManager.beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        for (int i = 0; i < tos.length; i++) {
+            Fragment to = tos[i];
+            String toName = to.getClass().getName();
+            ft.add(containerId, to, toName);
+            if (i != showPosition) {
+                ft.hide(to);
+            }
+        }
+        ft.commit();
+    }
+
 
 }

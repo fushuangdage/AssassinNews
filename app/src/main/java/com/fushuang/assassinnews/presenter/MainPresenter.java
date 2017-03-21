@@ -1,6 +1,5 @@
 package com.fushuang.assassinnews.presenter;
 
-import android.Manifest;
 
 
 import com.fushuang.assassinnews.View.MainView;
@@ -22,5 +21,8 @@ public class MainPresenter extends RxPresenter<MainView>{
         this.mRetrofitHelper = mRetrofitHelper;
     }
 
+    public void showExitMsg(String msg){
+       mView.showExitDialog(msg);  //强行使用一波的我主持人,哈哈
+    }
 
 }

@@ -5,5 +5,5 @@ package com.fushuang.assassinnews.View;
  */
 
 public interface MainView extends BaseView{
-    void showExitDialog();
+    void showExitDialog(String msg);
 }
