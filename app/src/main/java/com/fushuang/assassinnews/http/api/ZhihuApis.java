@@ -2,6 +2,7 @@ package com.fushuang.assassinnews.http.api;
 
 import com.fushuang.assassinnews.model.DailyBeforeListBean;
 import com.fushuang.assassinnews.model.DailyListBean;
+import com.fushuang.assassinnews.model.ZhihuDetailBean;
 
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -27,4 +28,10 @@ public interface ZhihuApis {
      */
     @GET("news/before/{date}")
     Observable<DailyBeforeListBean> getDailyBeforeList(@Path("date") String date);
+
+    /**
+     * 日报详情
+     */
+    @GET("news/{id}")
+    Observable<ZhihuDetailBean> getDetailInfo(@Path("id") int id);
 }

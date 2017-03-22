@@ -1,6 +1,7 @@
 package com.fushuang.assassinnews.View.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -14,8 +15,10 @@ import android.view.ViewGroup;
 
 import com.fushuang.assassinnews.R;
 import com.fushuang.assassinnews.View.ZhihuDailyView;
+import com.fushuang.assassinnews.View.activity.ZhihuDetailActivity;
 import com.fushuang.assassinnews.adapter.DailyListAdapter;
 import com.fushuang.assassinnews.adapter.DailyPagerAdapter;
+import com.fushuang.assassinnews.adapter.ZhyBaseRecycleAdapter.MultiItemTypeAdapter;
 import com.fushuang.assassinnews.adapter.ZhyBaseRecycleAdapter.wrapper.HeaderAndFooterWrapper;
 import com.fushuang.assassinnews.http.RetrofitHelper;
 import com.fushuang.assassinnews.model.DailyListBean;
@@ -30,7 +33,7 @@ import butterknife.BindView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ZhihuDailyFragment extends BaseFragment<ZhihuDailyPresenter> implements ZhihuDailyView, SwipeRefreshLayout.OnRefreshListener {
+public class ZhihuDailyFragment extends BaseFragment<ZhihuDailyPresenter> implements ZhihuDailyView, SwipeRefreshLayout.OnRefreshListener, MultiItemTypeAdapter.OnItemClickListener {
 
 
     @BindView(R.id.fbt_daily)
@@ -59,6 +62,7 @@ public class ZhihuDailyFragment extends BaseFragment<ZhihuDailyPresenter> implem
         mPresenter.attachView(this);
         mPresenter.getDailyData();
         mAdapter = new DailyListAdapter(mContext, R.layout.item_daily_zhihu, mList);
+        mAdapter.setOnItemClickListener(this);
         mWrapper = new HeaderAndFooterWrapper<DailyListBean.StoriesBean>(mAdapter);
         View top = LayoutInflater.from(mContext).inflate(R.layout.daily_top_view, null, false);
         ViewPager viewPager = (ViewPager) top.findViewById(R.id.daily_top_vp);
@@ -94,5 +98,18 @@ public class ZhihuDailyFragment extends BaseFragment<ZhihuDailyPresenter> implem
     @Override
     public void onRefresh() {
         mPresenter.getDailyData();
+    }
+
+    @Override
+    public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+        Intent intent = new Intent(mContext, ZhihuDetailActivity.class);
+        int id = mList.get(position).getId();
+        intent.putExtra("id",id);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+        return false;
     }
 }
