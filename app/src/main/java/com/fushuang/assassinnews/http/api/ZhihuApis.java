@@ -2,6 +2,8 @@ package com.fushuang.assassinnews.http.api;
 
 import com.fushuang.assassinnews.model.DailyBeforeListBean;
 import com.fushuang.assassinnews.model.DailyListBean;
+import com.fushuang.assassinnews.model.ThemeChildListBean;
+import com.fushuang.assassinnews.model.ThemeListBean;
 import com.fushuang.assassinnews.model.ZhihuDetailBean;
 
 import retrofit2.http.GET;
@@ -34,4 +36,19 @@ public interface ZhihuApis {
      */
     @GET("news/{id}")
     Observable<ZhihuDetailBean> getDetailInfo(@Path("id") int id);
+
+
+    /**
+     * 日报主题
+     */
+    @GET("themes")
+    Observable<ThemeListBean> getThemeList();
+
+
+    /**
+     * 主题日报详情
+     */
+    @GET("theme/{id}")
+    Observable<ThemeChildListBean> getThemeChildList(@Path("id") int id);
+
 }

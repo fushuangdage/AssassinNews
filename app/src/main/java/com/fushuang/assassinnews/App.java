@@ -3,6 +3,7 @@ package com.fushuang.assassinnews;
 import android.app.Application;
 import android.support.v7.app.AppCompatDelegate;
 
+
 import com.fushuang.assassinnews.di.component.AppComponent;
 import com.fushuang.assassinnews.di.component.DaggerAppComponent;
 import com.fushuang.assassinnews.di.module.AppModule;

@@ -11,6 +11,7 @@ import com.fushuang.assassinnews.adapter.ZhyBaseRecycleAdapter.CommonAdapter;
 import com.fushuang.assassinnews.adapter.ZhyBaseRecycleAdapter.base.ViewHolder;
 import com.fushuang.assassinnews.component.ImageLoader;
 import com.fushuang.assassinnews.model.DailyListBean;
+import com.fushuang.assassinnews.model.StoriesBean;
 
 import java.util.List;
 
@@ -18,18 +19,21 @@ import java.util.List;
  * Created by fushuang on 2017/3/20.
  */
 
-public class DailyListAdapter extends CommonAdapter<DailyListBean.StoriesBean> {
+public class DailyListAdapter extends CommonAdapter<StoriesBean> {
 
 
-    public DailyListAdapter(Context context, int layoutId, List<DailyListBean.StoriesBean> datas) {
+    public DailyListAdapter(Context context, int layoutId, List<StoriesBean> datas) {
         super(context, layoutId, datas);
     }
 
     @Override
-    protected void convert(ViewHolder holder, DailyListBean.StoriesBean storiesBean, int position) {
+    protected void convert(ViewHolder holder, StoriesBean storiesBean, int position) {
         ImageView icon = holder.getView(R.id.iv_daily);
         TextView view = holder.getView(R.id.tv_content);
-        ImageLoader.load(mContext,storiesBean.getImages().get(0),icon);
+        List<String> images = storiesBean.getImages();
+        if (images != null) {
+            ImageLoader.load(mContext, images.get(0),icon);
+        }
         view.setText(storiesBean.getTitle());
     }
 }

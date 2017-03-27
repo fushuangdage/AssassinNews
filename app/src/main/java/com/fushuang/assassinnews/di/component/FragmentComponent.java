@@ -2,6 +2,7 @@ package com.fushuang.assassinnews.di.component;
 
 import android.app.Activity;
 
+import com.fushuang.assassinnews.View.fragment.ThemeFragment;
 import com.fushuang.assassinnews.View.fragment.ZhihuDailyFragment;
 import com.fushuang.assassinnews.di.module.FragmentModule;
 import com.fushuang.assassinnews.di.scope.FragmentScope;
@@ -17,5 +18,7 @@ public interface FragmentComponent {
     Activity getActivity();
 
     void inject(ZhihuDailyFragment dailyFragment);
+
+    void inject(ThemeFragment themeFragment);
 
 }

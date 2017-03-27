@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import com.fushuang.assassinnews.View.activity.MainActivity;
 import com.fushuang.assassinnews.View.activity.ZhihuDetailActivity;
+import com.fushuang.assassinnews.View.activity.ZhihuThemeActivity;
 import com.fushuang.assassinnews.di.module.ActivityModule;
 import com.fushuang.assassinnews.di.scope.ActivityScope;
 
@@ -20,4 +21,6 @@ public interface ActivityComponent {
     void inject(MainActivity mainActivity);
 
     void inject(ZhihuDetailActivity zhihuDetailActivity);
+
+    void inject(ZhihuThemeActivity zhihuThemeActivity);
 }

@@ -22,6 +22,7 @@ import com.fushuang.assassinnews.adapter.ZhyBaseRecycleAdapter.MultiItemTypeAdap
 import com.fushuang.assassinnews.adapter.ZhyBaseRecycleAdapter.wrapper.HeaderAndFooterWrapper;
 import com.fushuang.assassinnews.http.RetrofitHelper;
 import com.fushuang.assassinnews.model.DailyListBean;
+import com.fushuang.assassinnews.model.StoriesBean;
 import com.fushuang.assassinnews.presenter.RxPresenter;
 import com.fushuang.assassinnews.presenter.ZhihuDailyPresenter;
 
@@ -43,12 +44,12 @@ public class ZhihuDailyFragment extends BaseFragment<ZhihuDailyPresenter> implem
     @BindView(R.id.sr_zhihu_daily)
     SwipeRefreshLayout mRefreshLayout;
 
-    List<DailyListBean.StoriesBean> mList=new ArrayList<>();
+    List<StoriesBean> mList=new ArrayList<>();
 
     List<DailyListBean.TopStoriesBean> mPagerList=new ArrayList<>();
 
     private DailyListAdapter mAdapter;
-    private HeaderAndFooterWrapper<DailyListBean.StoriesBean> mWrapper;
+    private HeaderAndFooterWrapper<StoriesBean> mWrapper;
     private DailyPagerAdapter mPagerAdapter;
 
     @Override
@@ -63,7 +64,7 @@ public class ZhihuDailyFragment extends BaseFragment<ZhihuDailyPresenter> implem
         mPresenter.getDailyData();
         mAdapter = new DailyListAdapter(mContext, R.layout.item_daily_zhihu, mList);
         mAdapter.setOnItemClickListener(this);
-        mWrapper = new HeaderAndFooterWrapper<DailyListBean.StoriesBean>(mAdapter);
+        mWrapper = new HeaderAndFooterWrapper<StoriesBean>(mAdapter);
         View top = LayoutInflater.from(mContext).inflate(R.layout.daily_top_view, null, false);
         ViewPager viewPager = (ViewPager) top.findViewById(R.id.daily_top_vp);
         mPagerAdapter = new DailyPagerAdapter(mPagerList, mContext);

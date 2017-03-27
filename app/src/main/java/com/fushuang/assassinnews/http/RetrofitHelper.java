@@ -3,6 +3,8 @@ package com.fushuang.assassinnews.http;
 import com.fushuang.assassinnews.http.api.ZhihuApis;
 import com.fushuang.assassinnews.model.DailyBeforeListBean;
 import com.fushuang.assassinnews.model.DailyListBean;
+import com.fushuang.assassinnews.model.ThemeChildListBean;
+import com.fushuang.assassinnews.model.ThemeListBean;
 import com.fushuang.assassinnews.model.ZhihuDetailBean;
 
 import rx.Observable;
@@ -31,5 +33,12 @@ public class RetrofitHelper {
        return mZhihuApiService.getDetailInfo(id);
     }
 
+    public Observable<ThemeListBean> getThemeList(){
+        return mZhihuApiService.getThemeList();
+    }
 
+
+    public Observable<ThemeChildListBean> getThemeChildList(int id){
+        return mZhihuApiService.getThemeChildList(id);
+    }
 }
