@@ -1,5 +1,6 @@
 package com.fushuang.assassinnews.View.activity;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
@@ -93,7 +94,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
 
                 break;
             case R.id.drawer_v2ex:
-
+                Intent intent = new Intent(this, IMActivity.class);
+                startActivity(intent);
                 break;
             case R.id.drawer_collection:
 

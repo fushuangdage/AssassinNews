@@ -1,10 +1,7 @@
 package com.fushuang.assassinnews.View.activity;
 
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
@@ -15,6 +12,7 @@ import com.fushuang.assassinnews.component.ImageLoader;
 import com.fushuang.assassinnews.model.ZhihuDetailBean;
 import com.fushuang.assassinnews.presenter.ZhihuDetailPresenter;
 import com.fushuang.assassinnews.utils.HtmlUtil;
+
 
 import butterknife.BindView;
 
