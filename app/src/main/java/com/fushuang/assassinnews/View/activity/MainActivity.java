@@ -3,6 +3,7 @@ package com.fushuang.assassinnews.View.activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -14,6 +15,8 @@ import android.widget.Toast;
 
 import com.fushuang.assassinnews.R;
 import com.fushuang.assassinnews.View.MainView;
+import com.fushuang.assassinnews.View.fragment.GeekFuliFragment;
+import com.fushuang.assassinnews.View.fragment.WXFragment;
 import com.fushuang.assassinnews.View.fragment.ZhihuMainFragment;
 import com.fushuang.assassinnews.presenter.MainPresenter;
 
@@ -39,6 +42,16 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
     @Inject
     ZhihuMainFragment mZhihuFragment;
 
+    @Inject
+    WXFragment mWXFragment;
+
+
+    @Inject
+    GeekFuliFragment mFuliFragment;
+
+    private Fragment oldFragment;
+    private Fragment newFragment;
+
 
     @Override
     protected void initInject() {
@@ -58,8 +71,8 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
         mDrawerLayout.addDrawerListener(mDrawerToggle);
         mNavigationView.setNavigationItemSelectedListener(this);
 
-        loadMultipleRootTransaction(getSupportFragmentManager(),R.id.main_content,0,mZhihuFragment);
-
+        loadMultipleRootTransaction(getSupportFragmentManager(),R.id.main_content,0,mZhihuFragment,mWXFragment,mFuliFragment);
+        oldFragment=mZhihuFragment;
     }
 
     @Override
@@ -80,20 +93,29 @@ public class MainActivity extends BaseActivity<MainPresenter> implements MainVie
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         switch (item.getItemId()) {
             case R.id.drawer_zhihu:
 
+                ft.hide(oldFragment).show(mZhihuFragment);
+                ft.commit();
+                oldFragment=mZhihuFragment;
                 break;
             case R.id.drawer_weixin:
-
+                ft.hide(oldFragment).show(mWXFragment);
+                ft.commit();
+                oldFragment=mWXFragment;
                 break;
             case R.id.drawer_gank:
-
+                ft.hide(oldFragment).show(mFuliFragment);
+                ft.commit();
+                oldFragment=mFuliFragment;
                 break;
             case R.id.drawer_xitu:
 
                 break;
             case R.id.drawer_v2ex:
+                //大师即时通讯
                 Intent intent = new Intent(this, IMActivity.class);
                 startActivity(intent);
                 break;

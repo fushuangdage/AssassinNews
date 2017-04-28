@@ -2,6 +2,8 @@ package com.fushuang.assassinnews.di.module;
 
 import com.fushuang.assassinnews.App;
 import com.fushuang.assassinnews.http.RetrofitHelper;
+import com.fushuang.assassinnews.http.api.GeekApis;
+import com.fushuang.assassinnews.http.api.WxApis;
 import com.fushuang.assassinnews.http.api.ZhihuApis;
 
 import javax.inject.Singleton;
@@ -28,8 +30,8 @@ public class AppModule {
 
     @Provides
     @Singleton
-    RetrofitHelper provideRetrofitHelper(ZhihuApis zhihuApis){
-            return new RetrofitHelper(zhihuApis);
+    RetrofitHelper provideRetrofitHelper(ZhihuApis zhihuApis, GeekApis geekApis, WxApis wxApis){
+            return new RetrofitHelper(zhihuApis,geekApis,wxApis);
     }
 
 

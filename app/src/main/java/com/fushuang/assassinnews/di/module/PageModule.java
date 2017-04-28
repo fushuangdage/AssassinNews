@@ -1,5 +1,7 @@
 package com.fushuang.assassinnews.di.module;
 
+import com.fushuang.assassinnews.View.fragment.GeekFuliFragment;
+import com.fushuang.assassinnews.View.fragment.WXFragment;
 import com.fushuang.assassinnews.View.fragment.ZhihuMainFragment;
 
 import javax.inject.Singleton;
@@ -18,6 +20,15 @@ public class PageModule {
         return new ZhihuMainFragment();
     }
 
+    @Singleton
+    @Provides
+    WXFragment provideWX(){return new WXFragment();}
 
+
+    @Singleton
+    @Provides
+    GeekFuliFragment provideFuli(){
+        return new GeekFuliFragment();
+    }
 
 }

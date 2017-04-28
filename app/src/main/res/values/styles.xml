@@ -10,6 +10,7 @@
         //沉浸状态栏
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowContentTransitions">true</item>
 
     </style>
     

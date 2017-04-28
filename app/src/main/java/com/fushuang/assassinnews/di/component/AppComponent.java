@@ -1,6 +1,8 @@
 package com.fushuang.assassinnews.di.component;
 
 import com.fushuang.assassinnews.App;
+import com.fushuang.assassinnews.View.fragment.GeekFuliFragment;
+import com.fushuang.assassinnews.View.fragment.WXFragment;
 import com.fushuang.assassinnews.View.fragment.ZhihuMainFragment;
 import com.fushuang.assassinnews.di.module.AppModule;
 import com.fushuang.assassinnews.di.module.HttpModule;
@@ -22,5 +24,9 @@ public interface AppComponent {
     RetrofitHelper retrofitHelper();
 
     ZhihuMainFragment zhihuMainFragment();
+
+    WXFragment wxFragment();
+
+    GeekFuliFragment geekFuliFragment();
 
 }

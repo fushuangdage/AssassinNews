@@ -37,7 +37,7 @@ public class ZhihuMainFragment extends BaseFragment {
 
     @Override
     protected void initEventAndData() {
-
+        mList.clear();
         mList.add(new ZhihuDailyFragment());
         mList.add(new ThemeFragment());
         mList.add(new ZhihuDailyFragment());
@@ -48,8 +48,6 @@ public class ZhihuMainFragment extends BaseFragment {
         mViewPager.setAdapter(adapter);
 
         mTabLayout.setupWithViewPager(mViewPager);
-
-
 
     }
 

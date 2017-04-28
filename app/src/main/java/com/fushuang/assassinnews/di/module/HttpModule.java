@@ -1,7 +1,12 @@
 package com.fushuang.assassinnews.di.module;
 
 import com.fushuang.assassinnews.Constants;
+import com.fushuang.assassinnews.di.qualifier.GeekUrl;
+import com.fushuang.assassinnews.di.qualifier.WxUrl;
 import com.fushuang.assassinnews.di.qualifier.ZhihuUrl;
+import com.fushuang.assassinnews.http.RetrofitHelper;
+import com.fushuang.assassinnews.http.api.GeekApis;
+import com.fushuang.assassinnews.http.api.WxApis;
 import com.fushuang.assassinnews.http.api.ZhihuApis;
 
 import java.io.File;
@@ -79,11 +84,37 @@ public class HttpModule {
         return createRetrofit(builder, client, ZhihuApis.HOST);
     }
 
+    @Singleton
+    @Provides
+    @GeekUrl
+    Retrofit provideGeekRetrofit(Retrofit.Builder builder,OkHttpClient client){
+        return createRetrofit(builder,client,GeekApis.HOST);
+    }
+
+    @Singleton
+    @Provides
+    @WxUrl
+    Retrofit provideWxRetrofit(Retrofit.Builder builder,OkHttpClient client){
+        return createRetrofit(builder,client,WxApis.HOST);
+    }
 
     @Singleton
     @Provides
     ZhihuApis provideZhihuService(@ZhihuUrl Retrofit retrofit){
         return retrofit.create(ZhihuApis.class);
+    }
+
+
+    @Singleton
+    @Provides
+    WxApis provideWxServices(@WxUrl Retrofit retrofit){
+        return retrofit.create(WxApis.class);
+    }
+
+    @Singleton
+    @Provides
+    GeekApis provideGeekServices(@GeekUrl Retrofit retrofit){
+        return retrofit.create(GeekApis.class);
     }
 
     private Retrofit createRetrofit(Retrofit.Builder builder, OkHttpClient client, String host) {
@@ -94,8 +125,6 @@ public class HttpModule {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
-
-
 
 
 }
